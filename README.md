@@ -1,6 +1,7 @@
 Predicting Tumour Diagnosis and Interpreting Measurement Importance
 
 Motivation
+
 Medical prediction models are often evaluated only by accuracy.
 This project explores whether a simple interpretable model can both predict diagnosis and provide biologically meaningful insight into which measurements drive the prediction.
 
