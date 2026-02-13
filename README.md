@@ -42,5 +42,6 @@ Tumour size and texture variability were the strongest predictors of malignancy,
 Limitation
 
 The dataset is curated and may not reflect real clinical workflow data.
+## Model Interpretation
 
-![Feature Importance](results/feature_importance.png)
+![Feature Importance](feature_importance.png)
