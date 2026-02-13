@@ -73,3 +73,4 @@ coefficients = pd.Series(model.coef_[0], index=X.columns)
 coefficients = coefficients.sort_values()
 
 print(coefficients.tail(10))
+
