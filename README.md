@@ -45,3 +45,6 @@ The dataset is curated and may not reflect real clinical workflow data.
 ## Model Interpretation
 
 ![Feature Importance](feature_importance.png)
+
+Future Direction:
+Investigating how predictive models can be evaluated in decision-making contexts rather than accuracy alone.
