@@ -74,3 +74,32 @@ coefficients = coefficients.sort_values()
 
 print(coefficients.tail(10))
 
+# visualization
+import matplotlib.pyplot as plt
+
+print("✅ Reached plotting section")
+
+# get coefficients
+coefficients = pd.Series(model.coef_[0], index=X.columns)
+
+# select top 10 most important features
+top_features = coefficients.abs().sort_values(ascending=False).head(10).index
+top_coefficients = coefficients[top_features]
+
+# create figure
+fig, ax = plt.subplots(figsize=(8,5))
+top_coefficients.sort_values().plot(kind="barh", ax=ax)
+
+ax.set_title("Most Influential Measurements in Prediction")
+ax.set_xlabel("Coefficient Value")
+
+plt.tight_layout()
+
+# save clean PNG
+plt.savefig("feature_importance.png", format="png", dpi=300)
+
+# close figure completely (important)
+plt.close(fig)
+
+print("✅ Saved feature_importance.png")
+
