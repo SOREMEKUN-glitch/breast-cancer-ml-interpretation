@@ -74,6 +74,7 @@ Accuracy: 0.956
 Confusion Matrix:
 
 Actual Benign:	39 Predicted Benign;      	4 Predicted Malignant
+
 Actual Malignant:	1 Predicted Benign;      	70 Predicted Malignant
 
 Key observation:
