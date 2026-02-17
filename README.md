@@ -1,50 +1,248 @@
-Predicting Tumour Diagnosis and Interpreting Measurement Importance
+Interpreting Malignant Tumour Predictions from Clinical Measurements
+Overview
 
-Motivation
+This project investigates whether routine tumour measurements can meaningfully distinguish malignant from benign cases, and more importantly, which measurements drive the prediction. 
 
-Medical prediction models are often evaluated only by accuracy.
-This project explores whether a simple interpretable model can both predict diagnosis and provide biologically meaningful insight into which measurements drive the prediction.
+Rather than focusing only on model accuracy, the goal is to understand how reliable the prediction is and why the model reaches its conclusion. In clinical contexts, a correct prediction is not sufficient; the reasoning behind it determines whether the result can be trusted.
 
-Question
+Research Question
 
-Can medical measurements predict diagnosis, and which measurements are most informative?
-
+Can measurable tumour characteristics predict malignancy, and which features most influence the decision?
 Dataset
 
-Breast Cancer Wisconsin dataset (from scikit-learn)
-Each row represents one patient and each column represents a tumour measurement.
+The analysis uses the publicly available breast cancer diagnostic dataset included in scikit-learn.
+
+Each sample contains quantitative measurements extracted from digitised images of fine needle aspirate biopsies.
+
+Examples of features:
+
+mean radius
+
+mean texture
+
+mean area
+
+worst perimeter
+
+fractal dimension
+
+symmetry
+
+Target:
+
+0 = benign
+
+1 = malignant
+
+Total samples: 569
 
 Method
+1. Data preparation
 
-1. Logistic regression classifier
+Loaded dataset from scikit-learn
 
-2. 80/20 train–test split
+Separated predictors and diagnosis target
 
-3. Evaluation using sensitivity and confusion matrix
+Split into training and testing subsets (80/20)
 
-4. Feature coefficient analysis for interpretability
+2. Modelling
+
+Used logistic regression as an interpretable baseline model.
+
+Reason:
+A transparent model allows examination of feature influence rather than acting as a black box.
+
+3. Evaluation
+
+Model performance evaluated using:
+
+Accuracy
+
+Confusion matrix
+
+Precision & recall
+
+Sensitivity to malignant cases
+
+Clinical motivation:
+Missing a malignant tumour (false negative) is more critical than falsely flagging a benign one.
+
+4. Feature interpretation
+
+Examined model coefficients to identify which measurements most influenced classification decisions.
 
 Results
 
-The model achieved high sensitivity and missed very few malignant cases in the test set.
-1. Accuracy: 0.956
+Accuracy: 0.956
 
-2. Confusion matrix: [[39, 4], [1, 70]]
+Confusion Matrix:
 
-3. Missed malignant cases: 1
+	Predicted Benign	Predicted Malignant
+Actual Benign	39	4
+Actual Malignant	1	70
 
-4. Top positive predictors: texture error, mean radius, mean texture
+Key observation:
+The model rarely misses malignant cases (high recall), which is more important clinically than overall accuracy.
+
+Most Influential Features
+
+Top contributing measurements:
+
+texture error
+
+mean radius
+
+mean texture
+
+worst radius
+
+compactness error
+
+mean area
+
+These relate to tumour size and irregularity — known biological indicators of malignancy.
 
 Interpretation
 
-Tumour size and texture variability were the strongest predictors of malignancy, consistent with biological expectations about irregular tumour growth.
+The important outcome of this project is not the high accuracy, but that the model’s reasoning aligns with biological expectations.
 
-Limitation
+Larger, more irregular tumours were consistently associated with malignant classification.
 
-The dataset is curated and may not reflect real clinical workflow data.
-## Model Interpretation
+This demonstrates that even simple interpretable models can capture meaningful structure in clinical measurements, but their usefulness depends on understanding the basis of the prediction rather than accepting the output blindly.
 
-![Feature Importance](feature_importance.png)
+Limitations
 
-Future Direction:
-Investigating how predictive models can be evaluated in decision-making contexts rather than accuracy alone.
+Dataset is curated and clean compared to real clinical workflow data
+
+Does not include missing values or measurement variability
+
+Predictions are not diagnostic decisions
+
+Model performance in practice would depend on population differences
+
+How to Run
+
+Install requirements:
+
+pip install -r requirements.txt
+
+
+Run:
+
+python main.py
+
+
+Outputs:
+
+confusion matrix
+
+classification report
+
+feature importance plot
+
+Output
+
+Key Takeaway
+
+A predictive model is useful only when its reasoning can be understood.
+In medical contexts, interpretability is not optional — it determines whether a prediction can support a decision.
+
+This version positions you as someone thinking about trust, inference, and decision-making, which aligns with research supervisors.
+
+If you want, I can now help you write the LinkedIn post to match this research tone instead of sounding like a beginner ML project.
+
+Method
+1. Data preparation
+
+Loaded dataset from scikit-learn
+
+Separated predictors and diagnosis target
+
+Split into training and testing subsets (80/20)
+
+2. Modelling
+
+Used logistic regression as an interpretable baseline model.
+
+Reason:
+A transparent model allows examination of feature influence rather than acting as a black box.
+
+3. Evaluation
+
+Model performance evaluated using:
+
+Accuracy
+
+Confusion matrix
+
+Precision & recall
+
+Sensitivity to malignant cases
+
+Clinical motivation:
+Missing a malignant tumour (false negative) is more critical than falsely flagging a benign one.
+
+4. Feature interpretation
+
+Examined model coefficients to identify which measurements most influenced classification decisions.
+
+Results
+
+Accuracy: 0.956
+
+Confusion Matrix:
+
+	Predicted Benign	Predicted Malignant
+Actual Benign	39	4
+Actual Malignant	1	70
+
+Key observation:
+The model rarely misses malignant cases (high recall), which is more important clinically than overall accuracy.
+
+Most Influential Features
+
+Top contributing measurements:
+
+texture error
+
+mean radius
+
+mean texture
+
+worst radius
+
+compactness error
+
+mean area
+
+These relate to tumour size and irregularity — known biological indicators of malignancy.
+
+Interpretation
+
+The important outcome of this project is not the high accuracy, but that the model’s reasoning aligns with biological expectations.
+
+Larger, more irregular tumours were consistently associated with malignant classification.
+
+This demonstrates that even simple interpretable models can capture meaningful structure in clinical measurements, but their usefulness depends on understanding the basis of the prediction rather than accepting the output blindly.
+
+Limitations
+
+Dataset is curated and clean compared to real clinical workflow data
+
+Does not include missing values or measurement variability
+
+Predictions are not diagnostic decisions
+
+Model performance in practice would depend on population differences
+
+Outputs
+confusion matrix
+
+classification report
+
+feature importance plot
+
+Key Takeaway
+
+A predictive model is useful only when its reasoning can be understood.
+In medical contexts, interpretability is not optional — it determines whether a prediction can support a decision.
