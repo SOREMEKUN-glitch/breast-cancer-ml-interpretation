@@ -16,23 +16,19 @@ Each sample contains quantitative measurements extracted from digitised images o
 
 Examples of features:
 
-mean radius
+-mean radius
 
-mean texture
+-mean texture
 
-mean area
+-mean area
 
-worst perimeter
+-worst perimeter
 
-fractal dimension
+-fractal dimension
 
-symmetry
+-symmetry
 
-Target:
-
-0 = benign
-
-1 = malignant
+Target:   0 = benign;   1 = malignant
 
 Total samples: 569
 
@@ -77,8 +73,8 @@ Accuracy: 0.956
 
 Confusion Matrix:
 
-Actual Benign	39 Predicted Benign	4 Predicted Malignant
-Actual Malignant	1 Predicted Benign	70 Predicted Malignant
+Actual Benign:	39 Predicted Benign;      	4 Predicted Malignant
+Actual Malignant:	1 Predicted Benign;      	70 Predicted Malignant
 
 Key observation:
 The model rarely misses malignant cases (high recall), which is more important clinically than overall accuracy.
